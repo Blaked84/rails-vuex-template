@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-es2015-shorthand-properties"],
+  "presets": ["es2015"]
+
+}
