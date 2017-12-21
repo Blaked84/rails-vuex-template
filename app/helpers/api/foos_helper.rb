@@ -1,0 +1,2 @@
+module Api::FoosHelper
+end

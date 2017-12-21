@@ -1,9 +1,11 @@
 import * as types from '../mutation-types'
+import * as api from '../../api'
+
 
 // initial state
-// shape: [{ id, quantity }]
 const state = {
-    foo: "Foo from store!"
+    foo: "Foo from store!",
+    foos : []
 };
 
 // getters
@@ -13,6 +15,12 @@ const getters = {
 
 // actions
 const actions = {
+    fetchAllFoos ({commit}) {
+        api.foos.allPromise().then((foos)=>{
+            commit(types.UPDATE_ALL_FOOS,foos)
+        })
+
+    },
     addFoo ({ commit, state }) {
         commit(types.ADD_FOO)
     }};
@@ -21,6 +29,9 @@ const actions = {
 const mutations = {
     [types.ADD_FOO] (state) {
         state.foo += "Foo! "
+    },
+    [types.UPDATE_ALL_FOOS](state, foos){
+        state.foos = foos
     }
 };
 

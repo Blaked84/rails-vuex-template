@@ -9,7 +9,10 @@ import Vue from 'vue/dist/vue.esm'
 import App from '../components/app.vue';
 import store from '../store';
 import axios from 'axios';
-import {mapMutations} from 'vuex'
+import * as api from '../api'
+
+import {mapActions} from 'vuex'
+
 
 
 Vue.prototype.$http = axios;
@@ -20,10 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         el: '#application',
         store,
         components: { App },
-        // created () {
-        //     this.$store.commit('initData')
-        // },
-        // methods: {...mapMutations(['initData'])},
+        created () {
+            this.$store.dispatch('fetchAllFoos')
+        },
+        methods: {...mapActions(['fetchAllFoos'])},
 
     })
 })
